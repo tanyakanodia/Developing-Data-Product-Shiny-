@@ -1,0 +1,58 @@
+---
+title       : Shiny Presentation
+subtitle    : Developing Data Product(Course project)
+author      : Tanya
+job         : 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : [bootstrap]            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## Assignment details
+
+The goal of this assignment is to build:
+
+1. A Shiny application that has widget input, ui input in server.R, reactive output using server calculations, and supporting documentation.
+
+2. A Reproducible Pitch Presentation that contains five slides in either Slidify or Rstudio Presenter that is pushed to and hosted on GitHub or Rpubs and contains embedded R code that runs.
+
+--- .class #id 
+---
+## Intoduction
+
+Have you ever wondered how diamonds are priced beyond the number of carats(or weight)? Price also depends on the diamond's cut, color, and clarity.
+- Cut: quality of the diamond from best to worst (Ideal, Premium, Very Good, Good, Fair)
+- Color: best(D) to worst(J)
+- Clarity: measures how clear the diamond is from best to worst (IF, VVS2, VVS1, VS2, VS1, SI2, SI1, I1)
+
+This shiny app will predict diamond price based on your input of these factors
+
+--- .class #id 
+---
+## How Prediction Works
+
+The diamond data set is used to predict the diamond prices. 
+
+```{r, eval=FALSE}
+diamonds_sub <- subset(diamonds, cut == input$cut &
+                                   color == input$color &
+                                   clarity == input$clarity)
+model1 <- lm(price~carat,data=diamonds_sub)
+predict(model1, newdata = data.frame(carat = input$lm))
+
+```
+The Prediction is based on cut,color,clarity,carat.You can specify these values using easy-to-use sliders,while density plots based on the iris dataset provide useful visual feedback as to where your values stand, compared to the values in the dataset.
+
+--- .class #id 
+---
+##  Ready to give it a try
+
+Use the Shiny app at  https://tanyak.shinyapps.io/myApp/
+
+Get the app source code at https://github.com/tanyakanodia/Developing-Data-Product-Shiny-
+
+
+--- .class #id
